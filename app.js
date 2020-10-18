@@ -8,23 +8,23 @@ let symptomsData;
 let symptoms = new Map();
 let token;
 //get Token
-async function getToken(){
+async function getToken() {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer "+username+":"+encodedPassword);
+    myHeaders.append("Authorization", "Bearer " + username + ":" + encodedPassword);
 
     var raw = "";
 
     var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
     };
     await fetch("https://authservice.priaid.ch/login", requestOptions)
-      .then(response => response.json())
-      .then((result) => {token=result.Token})
-      .catch(error => console.log('error', error));
-  }
+        .then(response => response.json())
+        .then((result) => { token = result.Token })
+        .catch(error => console.log('error', error));
+}
 // Fetch data from API
 async function getSymptoms() {
     await getToken();
@@ -43,7 +43,6 @@ async function getSymptoms() {
     const dropdownListOptions = document.querySelectorAll(".dropdown-options ul li");
 
     dropdownListOptions.forEach(list => {
-        console.log("he")
         list.addEventListener("click", setSymptomOnClick);
     })
 }
@@ -112,6 +111,12 @@ function SetupEvtForSymptomField(element) {
 
     element.addEventListener("input", (e) => {
         CalculateDropdownOptions(e)
+
+        //Dropdown
+        let dropdownPosition = offset(element)
+        document.querySelector(".dropdown-options").style.top = `${dropdownPosition.top + 60}px`
+        dropdownOptions.style.display = "flex";
+        focusedSymptomField = evt.target;
     })
 }
 
@@ -157,7 +162,6 @@ function CalculateDropdownOptions(selectedInputTag) {
 //Set sympton name field on click 
 function setSymptomOnClick(e) {
     focusedSymptomField.value = e.target.innerText
-    // console.log(focusedSymptomField);
 }
 
 function OnGetResults() {
@@ -165,6 +169,9 @@ function OnGetResults() {
 
     yob = document.querySelector("input[name = year-of-birth]").value.toLowerCase();
     gender = document.querySelector("input[name = gender]").value.toLowerCase();
+
+    if (gender == "m") { gender = "male" }
+    else if (gender == "f") { gender = "female" }
 
     if (!yob || !gender) { isValid = false; }
     else if (!(gender == "male" || gender == "female")) { isValid = false; }

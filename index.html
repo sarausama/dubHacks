@@ -14,46 +14,68 @@
 <body>
     <header>
         <div class="header-row">
-            <img src="./images/logo.svg" alt="Symptor Checker Icon">
-            <h1>Symptoms Checker</h1>
-        </div>
-        <div class="header-row">
+            <a href="./index.html">
+                <div class="logo">
+                    <img src="./images/logo.svg" alt="Symptor Checker Icon">
+                    <h1>QuickCheck</h1>
+                </div>
+            </a>
+
             <ul>
-                <li><a href="./index.html">Home</a></li>
+                <li class="underline"><a href="./index.html">Home</a></li>
                 <li><a href="./takeTheTest.html">Take the Test</a></li>
             </ul>
         </div>
     </header>
 
-    <main>
-        <p>Answer Some Basic Questions first</p>
-        <div class="form-area">
-            <div class="searchInput">
-                <input type="text" name="year-of-birth" required>
 
-                <label for="year-of-birth" class="label-name"> <span class="content-name">
-                        Year of Birth
-                    </span></label>
-            </div>
-            <div class="searchInput">
-                <input type="text" name="gender" required>
-
-                <label for="gender" class="label-name"> <span class="content-name">
-                        Gender
-                    </span></label>
-            </div>
-            <div class="searchInput">
-                <input type="text" name="Symptoms" required>
-
-                <label for="Symptoms" class="label-name"> <span class="content-name">
-                        Symptoms
-                    </span></label>
-            </div>
-            <div class="add-symptoms">
-                <img src="./images/plus.svg" alt="Add Button">Add More Symptoms
+    <section class="hero full-screen-width">
+        <div class="text-area">
+            <p>QuickCheck is an online symptom checker that allows users to receive a preliminary diagnosis,
+                based on the symptoms they report from the comfort of their home.</p>
+            <div class="button-area">
+                <a href="./takeTheTest.html">
+                    <div class="btn-grey">
+                        Take the test <img src="./images/arrow.svg" alt="Right Arrow">
+                    </div>
+                </a>
             </div>
         </div>
-    </main>
+        <div class="image-area">
+            <img src="./images/homeImage.svg" alt="Home Image">
+        </div>
+    </section>
+    <section class="cards-section full-screen-width">
+        <div class="card">
+            <img src="./images/free.svg" alt="Free">
+            <div class="text">
+                <h2>Free</h2>
+                <p>QuickCheck cares about you. That’s why our service is free!</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./images/accessible.svg" alt="Free">
+            <div class="text">
+                <h2>Accessible</h2>
+                <p>QuickCheck is accessible to everyone all over the world!</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./images/easyToUse.svg" alt="Free">
+            <div class="text">
+                <h2>Easy To Use</h2>
+                <p>QuickCheck software is intuitive and simple to use. Take the test to find out!</p>
+            </div>
+        </div>
+    </section>
+
+    <p class="disclaimer" style="color: #999;">Diclaimer: This is not real medical advice. Please contact a professional
+        doctor for a proper
+        diagnosis </p>
+
+    <footer>
+        <p>Made with &nbsp;<img src="./images/heart.svg" alt="Free">&nbsp;at DubHacks</p>
+    </footer>
 </body>
 
 </html>
