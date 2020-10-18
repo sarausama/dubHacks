@@ -5,11 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DubHacks 2020</title>
+    <link rel="stylesheet" href="./formstyles.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Symptom </title>
 </head>
 
 <body>
-    HELLO FELLOW HOOMANS
+    <header>
+        <div class="header-row">
+            <img src="./images/logo.svg" alt="Symptor Checker Icon">
+            <h1>Symptoms Checker</h1>
+        </div>
+        <div class="header-row">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./takeTheTest.html">Take the Test</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <p>Answer Some Basic Questions first</p>
+        <div class="form-area">
+            <div class="searchInput">
+                <input type="text" name="year-of-birth" required>
+
+                <label for="year-of-birth" class="label-name"> <span class="content-name">
+                        Year of Birth
+                    </span></label>
+            </div>
+            <div class="searchInput">
+                <input type="text" name="gender" required>
+
+                <label for="gender" class="label-name"> <span class="content-name">
+                        Gender
+                    </span></label>
+            </div>
+            <div class="searchInput">
+                <input type="text" name="Symptoms" required>
+
+                <label for="Symptoms" class="label-name"> <span class="content-name">
+                        Symptoms
+                    </span></label>
+            </div>
+            <div class="add-symptoms">
+                <img src="./images/plus.svg" alt="Add Button">Add More Symptoms
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
