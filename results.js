@@ -4,7 +4,25 @@ yob = localStorage.getItem('yob');
 ids = localStorage.getItem('symptomIds');
 gender = gender.substr(1, gender.length - 2)
 yob = yob.substr(1, yob.length - 2);
+let token;
+//get Token
+async function getToken(){
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer "+username+":"+encodedPassword);
 
+    var raw = "";
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    await fetch("https://authservice.priaid.ch/login", requestOptions)
+      .then(response => response.json())
+      .then((result) => {token=result.Token})
+      .catch(error => console.log('error', error));
+  }
 const table = document.querySelector("table");
 async function fetchDataFromAPI(url) {
     const data = await fetch(url, {
@@ -14,6 +32,7 @@ async function fetchDataFromAPI(url) {
 }
 getResults();
 async function getResults() {
+    await getToken();
     const fetchData = await fetchDataFromAPI(`https://healthservice.priaid.ch/diagnosis?symptoms=${ids}&gender=${gender}&year_of_birth=${yob}&token=${token}&format=json&language=en-gb`);
     const results = await fetchData.json();
     console.log(results);

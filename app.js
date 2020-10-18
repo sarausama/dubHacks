@@ -6,9 +6,28 @@ SetupEvtForSymptomField(dropdown)
 
 let symptomsData;
 let symptoms = new Map();
+let token;
+//get Token
+async function getToken(){
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer "+username+":"+encodedPassword);
 
+    var raw = "";
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    await fetch("https://authservice.priaid.ch/login", requestOptions)
+      .then(response => response.json())
+      .then((result) => {token=result.Token})
+      .catch(error => console.log('error', error));
+  }
 // Fetch data from API
 async function getSymptoms() {
+    await getToken();
     const fetchData = await fetchDataFromAPI(`https://healthservice.priaid.ch/symptoms?token=${token}&format=json&language=en-gb`);
     symptomsData = await fetchData.json();
 
